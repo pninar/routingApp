@@ -64,8 +64,7 @@
   "allergies": [
     {
       "id": 1,
-      "name": "חלב",
-      "test": null
+      "name": "חלב"
     },
     {
       "id": 2,

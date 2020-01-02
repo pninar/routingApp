@@ -7,6 +7,7 @@ import { LookupTables } from './lookup-tables.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { AllergyListComponent } from './allergy/allergy-list/allergy-list.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { AllergyEditComponent } from './allergy/allergy-edit/allergy-edit.component';
 
 const routes: Routes = [
     {
@@ -19,6 +20,13 @@ const routes: Routes = [
                 path: 'allergies',
                 component: AllergyListComponent,
                 data: { breadcrumb: 'Allergies' },
+            },
+            {
+                path: "allergies/:id",
+                component: AllergyEditComponent,
+                data: {
+                    breadcrumb: 'Allergy'
+                },
             },
             {
                 path: 'users',
