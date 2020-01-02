@@ -28,15 +28,14 @@ export class AllergyListComponent implements OnInit {
     );
   }
 
-  deleteButtonClick(id: number) {
+  delete(id: number) {
     this.allergyService.deleteAllergy(id).subscribe(
       () => this.getList(),
       (err: any) => console.log(err)
     );
   }
 
-  editButtonClick(id: number) {
-    // this.router.navigate(['lookup-tables/allergies/edit', id]);
+  edit(id: number) {
     this.router.navigate([{ outlets: { primary: 'lookup-tables/allergies/' + id.toString() } }]);
   }
 

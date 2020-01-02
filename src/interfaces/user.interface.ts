@@ -1,7 +1,7 @@
-export interface IUser {
-    id: number;
+import { ILookupItem } from './lookup-item.interface';
+
+export interface IUser extends ILookupItem {
     firstName: string;
     lastName: string;
-    userName: string;
     password: string;
 }

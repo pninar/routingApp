@@ -46,10 +46,10 @@ export class AllergyEditComponent implements OnInit {
     });
 
     this.route.paramMap.subscribe(params => {
-      const patientId = +params.get('id')
-      if (patientId) {
+      const id = +params.get('id')
+      if (id) {
         this.pageTitle = 'Edit Allergy';
-        this.getAllergy(patientId);
+        this.getAllergy(id);
       }
       else {
         this.pageTitle = 'Create Allergy';

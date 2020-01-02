@@ -50,14 +50,14 @@
       "id": 1,
       "firstName": "Eylon",
       "lastName": "Meroz",
-      "userName": "eylon",
+      "name": "eylon",
       "password": "101817"
     },
     {
       "id": 2,
       "firstName": "Pnina",
       "lastName": "Rosenstark",
-      "userName": "pnina",
+      "name": "pnina",
       "password": "222"
     }
   ],

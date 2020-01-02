@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
 
   // variable validationMessage stores the error message for each validation rule for each formControl
   validationMessages = {
-    "userName": {
-      "required": "User Name is required",
+    "name": {
+      "required": "Name is required",
     },
     "password": {
       "required": "Password is required",
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   // variable formErrors stores the current error message for each formControl
   formErrors = {
-    'userName': '',
+    'name': '',
     'password': '',
   }
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group(
       {
-        userName: ['', Validators.required],
+        name: ['', Validators.required],
         password: ['', Validators.required],
       }
     );
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.controls.userName.value);
+    console.log(this.loginForm.controls.name.value);
     console.log(this.loginForm.get("password").value);
     this.login();
   }

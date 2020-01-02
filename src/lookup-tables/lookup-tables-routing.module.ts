@@ -8,6 +8,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { AllergyListComponent } from './allergy/allergy-list/allergy-list.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { AllergyEditComponent } from './allergy/allergy-edit/allergy-edit.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 const routes: Routes = [
     {
@@ -32,6 +33,13 @@ const routes: Routes = [
                 path: 'users',
                 component: UserListComponent,
                 data: { breadcrumb: 'Users' },
+            },
+            {
+                path: "users/:id",
+                component: UserEditComponent,
+                data: {
+                    breadcrumb: 'User'
+                },
             },
             {
                 path: '',
