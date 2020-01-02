@@ -15,11 +15,11 @@ const routes: Routes = [
   },
   {
     path: 'courses',
-    loadChildren: './courses/courses.module#CoursesModule'
+    loadChildren: '../courses/courses.module#CoursesModule'
   },
   {
     path: 'feature2',
-    loadChildren: './feature2/feature2.module#Feature2Module'
+    loadChildren: '../feature2/feature2.module#Feature2Module'
   },
   {
     path: '',

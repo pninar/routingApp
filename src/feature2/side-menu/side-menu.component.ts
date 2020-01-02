@@ -4,16 +4,16 @@ import { ActivatedRoute } from '@angular/router';
 import { ISideMenuLink } from 'src/shared/components/side-menu/side-menu-link.interface';
 
 @Component({
-  selector: 'course-side-menu',
+  selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent implements OnInit {
   SideBarLinks: ISideMenuLink[] = [
-    { label: 'Course1', url: 'course1' },
-    { label: 'Course2', url: 'course2' },
-    { label: 'Course3', url: 'course3' },
-    { label: 'Course4', url: 'course4' },
+    { label: 'Feature2.1', url: '/feature2_1' },
+    { label: 'Feature2.2', url: '/feature2_2' },
+    { label: 'Feature2.3', url: '/feature2_3' },
+    { label: 'Feature2.4', url: '/feature2_4' },
   ];
 
   constructor(route: ActivatedRoute) {
