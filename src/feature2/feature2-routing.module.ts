@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from 'src/authentication/guards/auth/auth.guard';
+
 import { Feature2Component } from './feature2.component';
 import { Feature2CardsComponent } from './feature2-cards/feature2-cards.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
@@ -10,6 +12,7 @@ const routes: Routes = [
     {
         path: 'feature2',
         component: Feature2Component,
+        canActivate: [AuthGuard],
         data: {
             breadcrumb: 'Feature2',
         },

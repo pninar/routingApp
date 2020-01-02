@@ -1,0 +1,131 @@
+{
+  "patients": [
+    {
+      "id": 1,
+      "firstName": "Pnina1",
+      "lastName": "Rosenstark",
+      "contactPreference": "email",
+      "phone": "0547693581",
+      "phoneNumbers": [
+        {
+          "areaCode": "054",
+          "number": "7693581",
+          "type": "mobile"
+        }
+      ],
+      "email": "pninar@merozsoftware.co.il"
+    },
+    {
+      "id": 2,
+      "firstName": "John",
+      "lastName": "Doe",
+      "contactPreference": "phone",
+      "phone": "029993333",
+      "phoneNumbers": [
+        {
+          "areaCode": "02",
+          "number": "6527501",
+          "type": "work"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "firstName": "David",
+      "lastName": "Rosenstark",
+      "contactPreference": "email",
+      "email": "drosenstark@merozsoftware.co.il",
+      "phone": "9993580",
+      "phoneNumbers": [
+        {
+          "areaCode": "054",
+          "number": "5723580",
+          "type": "mobile"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Eylon",
+      "lastName": "Meroz",
+      "userName": "eylon",
+      "password": "101817"
+    },
+    {
+      "id": 2,
+      "firstName": "Pnina",
+      "lastName": "Rosenstark",
+      "userName": "pnina",
+      "password": "222"
+    }
+  ],
+  "allergies": [
+    {
+      "id": 1,
+      "name": "חלב",
+      "test": null
+    },
+    {
+      "id": 2,
+      "name": "בוטנים",
+      "test": null
+    },
+    {
+      "id": 3,
+      "name": "ביצים",
+      "test": null
+    },
+    {
+      "id": 4,
+      "name": "שומשום",
+      "test": null
+    },
+    {
+      "id": 5,
+      "name": "אגוזים",
+      "test": null
+    },
+    {
+      "id": 6,
+      "name": "אגוז מלך",
+      "test": null
+    },
+    {
+      "id": 7,
+      "name": "אגוז לוז",
+      "test": null
+    },
+    {
+      "id": 8,
+      "name": "קשיו",
+      "test": null
+    },
+    {
+      "id": 9,
+      "name": "שקד",
+      "test": null
+    },
+    {
+      "id": 10,
+      "name": "אגוז פקאן",
+      "test": null
+    },
+    {
+      "id": 11,
+      "name": "פיסטוק",
+      "test": null
+    },
+    {
+      "id": 12,
+      "name": "דגים",
+      "test": null
+    },
+    {
+      "id": 13,
+      "name": "אחר",
+      "test": null
+    }
+  ]
+}

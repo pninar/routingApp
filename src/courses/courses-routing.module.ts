@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from 'src/authentication/guards/auth/auth.guard';
+
 import { CoursesComponent } from './courses.component';
 import { CourseCardsComponent } from './course-cards/course-cards.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
@@ -12,19 +14,21 @@ import { Course3Component } from './course3/course3.component';
 const routes: Routes = [
     {
         path: 'courses',
-        component: CoursesComponent,
+        component: CoursesComponent, // show this in the primary router outlet
+        canActivate: [AuthGuard],
         data: {
             breadcrumb: 'Courses',
         },
         children: [
             {
                 path: '',
-                component: CourseCardsComponent,
+                component: CourseCardsComponent, // show this is the router outlet of CoursesComponent
                 data: {
                     breadcrumb: null,
                     path: 'courses'
                 },
             },
+
             // {
             //     path: ':id',
             //     component: CoursesCategoryComponent
