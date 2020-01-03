@@ -50,7 +50,7 @@
       "id": 1,
       "firstName": "Eylon",
       "lastName": "Meroz",
-      "name": "eylon",
+      "name": "eylon33",
       "password": "101817"
     },
     {
@@ -64,7 +64,8 @@
   "allergies": [
     {
       "id": 1,
-      "name": "חלב"
+      "name": "חלבdddd",
+      "test": null
     },
     {
       "id": 2,

@@ -17,7 +17,7 @@ import { AuthenticationModule } from 'src/authentication/authentication.module';
     AppComponent,
     AboutComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

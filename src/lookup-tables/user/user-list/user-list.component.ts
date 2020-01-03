@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ILookupItem } from 'src/interfaces/lookup-item.interface';
-import { Router } from '@angular/router';
 import { UserService } from 'src/core/services/users/user.service';
+import { BaseListComponent } from 'src/lookup-tables/base-list/base-list.component';
 
 @Component({
   selector: 'lookup-tables-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent extends BaseListComponent {
   list: ILookupItem[];
+  allowDelete: boolean = true;
+  allowEdit: boolean = true;
+  relativeRoute: string = 'users';
 
   constructor(private userService: UserService,
-    private router: Router) { }
-
-  ngOnInit() {
-    this.getList();
+    protected router: Router) {
+    super(router);
   }
 
   getList() {
@@ -34,10 +36,5 @@ export class UserListComponent implements OnInit {
       (err: any) => console.log(err)
     );
   }
-
-  edit(id: number) {
-    this.router.navigate([{ outlets: { primary: 'lookup-tables/users/' + id.toString() } }]);
-  }
-
 }
 

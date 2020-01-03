@@ -4,16 +4,16 @@
       <tr class="bg-primary">
         <th>Id</th>
         <th>Name</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th *ngIf="allowEdit">Edit</th>
+        <th *ngIf="allowDelete">Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of list">
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
-        <td><button class="btn btn-primary" (click)="editButtonClick(item.id)">Edit</button></td>
-        <td><button class="btn btn-danger" (click)="deleteButtonClick(item.id)">Delete</button></td>
+        <td *ngIf="allowEdit"><button class="btn btn-primary" (click)="editButtonClick(item.id)">Edit</button></td>
+        <td *ngIf="allowDelete"><button class="btn btn-danger" (click)="deleteButtonClick(item.id)">Delete</button></td>
       </tr>
     </tbody>
   </table>

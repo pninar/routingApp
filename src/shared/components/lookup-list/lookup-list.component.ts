@@ -9,6 +9,8 @@ import { ILookupItem } from 'src/interfaces/lookup-item.interface';
 })
 export class LookupListComponent implements OnInit {
   @Input() list: ILookupItem[];
+  @Input() allowDelete: boolean = true;
+  @Input() allowEdit: boolean = true;
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
 
