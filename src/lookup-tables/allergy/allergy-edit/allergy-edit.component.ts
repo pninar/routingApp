@@ -6,6 +6,8 @@ import { IAllergy } from 'src/interfaces/allergy.interface';
 import { AllergyService } from 'src/core/services/allergy/allergy.service';
 import { BaseEditComponent } from 'src/lookup-tables/base-edit/base-edit.component';
 
+import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
+
 @Component({
   selector: 'lookup-tables-allergy-edit',
   templateUrl: './allergy-edit.component.html',
@@ -28,7 +30,7 @@ export class AllergyEditComponent extends BaseEditComponent {
   pageTitle: string;
   item: IAllergy;
   itemType: string = 'Allergy';
-  relativeRoute: string = 'allergies';
+  relativeRoute: string = LookupTablesApiUrls.allergies;
 
   constructor(protected router: Router,
     protected route: ActivatedRoute,

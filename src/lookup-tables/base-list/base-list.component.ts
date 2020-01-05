@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ILookupItem } from 'src/interfaces/lookup-item.interface';
+import { LookupTablesApiUrls } from '../enums/api-urls .enum';
 
 @Component({
   selector: 'lookup-tables-base-list',
@@ -25,7 +26,7 @@ export abstract class BaseListComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.router.navigate([{ outlets: { primary: this.modulePath + '/' + this.relativeRoute + '/' + id.toString() } }]);
+    this.router.navigate([{ outlets: { primary: LookupTablesApiUrls.baseUrl + '/' + this.relativeRoute + '/' + id.toString() } }]);
   }
 
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ILookupItem } from 'src/interfaces/lookup-item.interface';
 import { UserService } from 'src/core/services/users/user.service';
 import { BaseListComponent } from 'src/lookup-tables/base-list/base-list.component';
+import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
 
 @Component({
   selector: 'lookup-tables-user-list',
@@ -14,7 +15,7 @@ export class UserListComponent extends BaseListComponent {
   list: ILookupItem[];
   allowDelete: boolean = true;
   allowEdit: boolean = true;
-  relativeRoute: string = 'users';
+  relativeRoute: string = LookupTablesApiUrls.users;
 
   constructor(private userService: UserService,
     protected router: Router) {

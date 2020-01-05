@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ILookupItem } from 'src/interfaces/lookup-item.interface';
 import { AllergyService } from 'src/core/services/allergy/allergy.service';
 import { BaseListComponent } from 'src/lookup-tables/base-list/base-list.component';
+import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
 
 @Component({
   selector: 'lookup-tables-allergy-list',
@@ -14,7 +15,7 @@ export class AllergyListComponent extends BaseListComponent {
   list: ILookupItem[];
   allowDelete: boolean = true;
   allowEdit: boolean = true;
-  relativeRoute: string = 'allergies';
+  relativeRoute: string = LookupTablesApiUrls.allergies;
 
   constructor(private allergyService: AllergyService,
     protected router: Router) {

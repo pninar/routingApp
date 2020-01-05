@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ILookupItem } from 'src/interfaces/lookup-item.interface';
+import { LookupTablesApiUrls } from '../enums/api-urls .enum';
 
 @Component({
   selector: 'lookup-tables-base-edit',
@@ -9,7 +10,6 @@ import { ILookupItem } from 'src/interfaces/lookup-item.interface';
   styleUrls: ['./base-edit.component.css']
 })
 export abstract class BaseEditComponent implements OnInit {
-  protected modulePath: string = 'lookup-tables';
 
   // variable validationMessage stores the error message for each validation rule for each formControl
   abstract validationMessages = {};
@@ -36,11 +36,18 @@ export abstract class BaseEditComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.subscribeToFormValueChanges();
+    this.subscribeToRouteParameters();
+  }
 
+  subscribeToFormValueChanges(): void {
     this.frm.valueChanges.subscribe((data) => {
       this.logValidationErrors(this.frm);
     });
+  }
 
+  subscribeToRouteParameters(): void {
+    // set the page title based on the route parameters
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id')
       if (id) {
@@ -99,6 +106,6 @@ export abstract class BaseEditComponent implements OnInit {
   }
 
   routeToList() {
-    this.router.navigate([this.modulePath + '/' + this.relativeRoute])
+    this.router.navigate([LookupTablesApiUrls.baseUrl + '/' + this.relativeRoute])
   }
 }
