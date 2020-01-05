@@ -34,6 +34,11 @@ const routes: Routes = [
     loadChildren: '../lookup-tables/lookup-tables.module#LookupTablesModule'
   },
   {
+    path: 'patients',
+    canActivate: [AuthGuard],
+    loadChildren: '../patients/patients.module#PatientsModule'
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
