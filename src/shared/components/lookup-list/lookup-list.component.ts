@@ -14,6 +14,7 @@ export class LookupListComponent implements OnInit {
   @Input() columnList: IColumn[] = [];
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
+  @Output() itemClick = new EventEmitter();
 
   constructor() { }
 
@@ -26,6 +27,10 @@ export class LookupListComponent implements OnInit {
 
   editButtonClick(id: number) {
     this.edit.emit(id);
+  }
+
+  itemButtonClick(buttonText: string, id: number) {
+    this.itemClick.emit({ id: id, buttonText: buttonText });
   }
 
   getItemValue(item: any, propertyName: string): any {

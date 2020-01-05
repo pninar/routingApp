@@ -9,7 +9,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of list">
-        <td *ngFor="let column of columnList">{{getItemValue(item, column.dataPropertyName)}}</td>
+        <td *ngFor="let column of columnList">
+          <span *ngIf="column.cellControlType=='span'">{{getItemValue(item, column.spanText)}}</span>
+          <button class="btn btn-primary" *ngIf="column.cellControlType=='button'"
+            (click)="itemButtonClick(column.buttonText, item.id)">{{column.buttonText}}</button>
+        </td>
         <td *ngIf="allowEdit"><button class="btn btn-primary" (click)="editButtonClick(item.id)">Edit</button></td>
         <td *ngIf="allowDelete"><button class="btn btn-danger" (click)="deleteButtonClick(item.id)">Delete</button></td>
       </tr>

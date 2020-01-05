@@ -1,4 +1,6 @@
 export interface IColumn {
     header: string;
-    dataPropertyName: string;
+    spanText?: string;
+    cellControlType: 'button' | 'span';
+    buttonText?: string;
 }

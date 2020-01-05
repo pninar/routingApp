@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+
 import { PatientService } from 'src/core/services/patient/patient.service';
+import { PatientsRoutes } from '../enums/routes .enum';
 
 @Component({
   selector: 'patients-search',
@@ -33,10 +35,16 @@ export class SearchComponent implements OnInit {
 
 
   onSubmit(): void {
-    this.search();
+    let firstName = this.frm.get("firstName").value;
+    let lastName = this.frm.get("lastName").value;
+
+    this.search(firstName, lastName);
   }
 
-  search() {
-    this.router.navigate(['home']);
+  search(firstName: string, lastName: string) {
+    this.patientService.getPatients(firstName, lastName).subscribe(
+      () => this.router.navigate([PatientsRoutes.moduleRoute + '/' + PatientsRoutes.patients]),
+      (err: any) => console.log(err)
+    );
   }
 }
