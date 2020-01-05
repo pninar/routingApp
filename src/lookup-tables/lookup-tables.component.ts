@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './lookup-tables.component.html',
   styleUrls: ['./lookup-tables.component.css']
 })
-export class LookupTables implements OnInit {
+export class LookupTablesComponent implements OnInit {
 
   constructor() { }
 

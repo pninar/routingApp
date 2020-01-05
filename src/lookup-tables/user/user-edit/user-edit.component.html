@@ -18,9 +18,7 @@
           <label class="col-sm-2 control-label" for="name">User Name</label>
           <div class="col-sm-8">
             <input id="name" type="text" class="form-control" formControlName="userName" (blur)="logValidationErrors()">
-            <span class="help-block" *ngIf="formErrors.userName">
-              {{formErrors.name}}
-            </span>
+            <shared-span-errors [inputErrors]="formErrors.userName"></shared-span-errors>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from 'src/authentication/guards/auth/auth.guard';
 
-import { LookupTables } from './lookup-tables.component';
+import { LookupTablesComponent } from './lookup-tables.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { AllergyListComponent } from './allergy/allergy-list/allergy-list.component';
 import { UserListComponent } from './user/user-list/user-list.component';
@@ -13,7 +13,7 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 const routes: Routes = [
     {
         path: '',
-        component: LookupTables,
+        component: LookupTablesComponent,
         canActivate: [AuthGuard],
         data: { breadcrumb: 'Lookup Tables', path: 'lookup-tables' },
         children: [

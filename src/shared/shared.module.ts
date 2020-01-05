@@ -6,15 +6,16 @@ import { RouterModule } from '@angular/router';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { LookupListComponent } from './components/lookup-list/lookup-list.component';
+import { SpanErrorsComponent } from './components/span-errors/span-errors.component';
 
 @NgModule({
-  declarations: [SideMenuComponent, BreadcrumbComponent, LookupListComponent],
+  declarations: [SideMenuComponent, BreadcrumbComponent, LookupListComponent, SpanErrorsComponent],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
-    CommonModule, ReactiveFormsModule, SideMenuComponent, BreadcrumbComponent, LookupListComponent
+    CommonModule, ReactiveFormsModule, SideMenuComponent, BreadcrumbComponent, LookupListComponent, SpanErrorsComponent
   ]
 })
 export class SharedModule { }

@@ -16,9 +16,9 @@ export class UserEditComponent extends BaseEditComponent {
   // variable validationMessage stores the error message for each validation rule for each formControl
   validationMessages = {
     "userName": {
-      "required": "Name is required.",
-      "minlength": "Name must be greater than 2 characters.",
-      "maxlength": "Name must be less than 10 characters.",
+      "required": "User name is required.",
+      "minlength": "User name must be greater than 2 characters.",
+      "maxlength": "User name must be less than 10 characters.",
     },
     "password": {
       "required": "Password is required.",
