@@ -4,9 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { IAllergy } from 'src/interfaces/allergy.interface';
 import { AllergyService } from 'src/core/services/allergy/allergy.service';
-import { BaseEditComponent } from 'src/lookup-tables/base-edit/base-edit.component';
-
-import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
+import { BaseEditComponent } from 'src/shared/components/base-edit/base-edit.component';
+import { LookupTablesRoutes } from 'src/lookup-tables/enums/routes.enum';
 
 @Component({
   selector: 'lookup-tables-allergy-edit',
@@ -30,7 +29,8 @@ export class AllergyEditComponent extends BaseEditComponent {
   pageTitle: string;
   item: IAllergy;
   itemType: string = 'Allergy';
-  relativeRoute: string = LookupTablesApiUrls.allergies;
+  modulePath: string = LookupTablesRoutes.moduleRoute;
+  relativeRoute: string = LookupTablesRoutes.allergies;
 
   constructor(protected router: Router,
     protected route: ActivatedRoute,

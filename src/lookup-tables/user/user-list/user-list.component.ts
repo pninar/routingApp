@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from 'src/core/services/users/user.service';
-import { BaseListComponent } from 'src/lookup-tables/base-list/base-list.component';
-import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
+import { BaseListComponent } from 'src/shared/components/base-list/base-list.component';
 import { IColumn } from 'src/interfaces/column.interface';
 import { IId } from 'src/interfaces/id.interface';
+import { LookupTablesRoutes } from 'src/lookup-tables/enums/routes.enum';
 
 @Component({
   selector: 'lookup-tables-user-list',
@@ -14,14 +14,15 @@ import { IId } from 'src/interfaces/id.interface';
 })
 export class UserListComponent extends BaseListComponent {
   list: IId[];
+  modulePath: string = LookupTablesRoutes.moduleRoute;
   allowDelete: boolean = true;
   allowEdit: boolean = true;
-  relativeRoute: string = LookupTablesApiUrls.users;
+  relativeRoute: string = LookupTablesRoutes.users;
   columnList: IColumn[] = [
-    { header: 'Id', dataPropertyName: 'id' },
-    { header: 'User Name', dataPropertyName: 'userName' },
-    { header: 'First Name', dataPropertyName: 'firstName' },
-    { header: 'Last Name', dataPropertyName: 'lastName' }
+    { header: 'Id', cellControlType: 'span', spanText: 'id' },
+    { header: 'User Name', cellControlType: 'span', spanText: 'userName' },
+    { header: 'First Name', cellControlType: 'span', spanText: 'firstName' },
+    { header: 'Last Name', cellControlType: 'span', spanText: 'lastName' }
   ];
 
   constructor(private userService: UserService,

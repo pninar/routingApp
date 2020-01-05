@@ -4,8 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { IUser } from 'src/interfaces/user.interface';
 import { UserService } from 'src/core/services/users/user.service';
-import { BaseEditComponent } from 'src/lookup-tables/base-edit/base-edit.component';
-import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
+import { BaseEditComponent } from 'src/shared/components/base-edit/base-edit.component';
+import { LookupTablesRoutes } from 'src/lookup-tables/enums/routes.enum';
 
 @Component({
   selector: 'lookup-tables-user-edit',
@@ -34,7 +34,8 @@ export class UserEditComponent extends BaseEditComponent {
   pageTitle: string;
   item: IUser;
   itemType: string = 'User';
-  relativeRoute: string = LookupTablesApiUrls.users;
+  modulePath: string = LookupTablesRoutes.moduleRoute;
+  relativeRoute: string = LookupTablesRoutes.users;
 
   constructor(protected router: Router,
     protected route: ActivatedRoute,
