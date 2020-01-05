@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormArray } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ILookupItem } from 'src/interfaces/lookup-item.interface';
-import { LookupTablesApiUrls } from '../enums/api-urls .enum';
+
 import { IId } from 'src/interfaces/id.interface';
 
 @Component({
-  selector: 'lookup-tables-base-edit',
+  selector: 'shared-base-edit',
   templateUrl: './base-edit.component.html',
   styleUrls: ['./base-edit.component.css']
 })
@@ -22,6 +21,7 @@ export abstract class BaseEditComponent implements OnInit {
   abstract pageTitle: string;
   abstract item: IId;
   abstract itemType: string;
+  abstract modulePath: string;
   abstract relativeRoute: string;
 
   abstract mapFormValuesToModel(): void;
@@ -107,6 +107,6 @@ export abstract class BaseEditComponent implements OnInit {
   }
 
   routeToList() {
-    this.router.navigate([LookupTablesApiUrls.baseUrl + '/' + this.relativeRoute])
+    this.router.navigate([this.modulePath + '/' + this.relativeRoute])
   }
 }

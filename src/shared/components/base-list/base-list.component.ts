@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LookupTablesApiUrls } from '../enums/api-urls .enum';
 import { IColumn } from 'src/interfaces/column.interface';
 import { IId } from 'src/interfaces/id.interface';
 
 @Component({
-  selector: 'lookup-tables-base-list',
+  selector: 'shared-base-list',
   templateUrl: './base-list.component.html',
   styleUrls: ['./base-list.component.css']
 })
 export abstract class BaseListComponent implements OnInit {
   protected list: IId[];
-  protected modulePath: string = 'lookup-tables';
+  abstract modulePath: string;
   abstract allowDelete: boolean;
   abstract allowEdit: boolean;
   abstract relativeRoute: string;
@@ -28,7 +27,7 @@ export abstract class BaseListComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.router.navigate([{ outlets: { primary: LookupTablesApiUrls.baseUrl + '/' + this.relativeRoute + '/' + id.toString() } }]);
+    this.router.navigate([{ outlets: { primary: this.modulePath + '/' + this.relativeRoute + '/' + id.toString() } }]);
   }
 
 }
