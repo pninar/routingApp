@@ -33,7 +33,11 @@ export abstract class RestService {
     return this.httpClient.get<any>(`${baseUrl + relativeUrl}`);
   }
 
-  // chached version
+  // cached version
+  // return cached data if:
+  // 1. haven't gotten any data yet
+  // 2. want the cached data
+  // for example, when editing the list, we don't want to use the cached data because we want to see the edited changes
   protected getList(relativeUrl: string, ignoreCachedData: boolean = false): Observable<any[]> {
     if (!this.data || ignoreCachedData) {
       this.data = this.httpClient.get<any[]>(baseUrl + relativeUrl).pipe(shareReplay(1));
