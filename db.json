@@ -48,16 +48,16 @@
   "users": [
     {
       "id": 1,
+      "userName": "eylon",
       "firstName": "Eylon",
       "lastName": "Meroz",
-      "name": "eylon",
       "password": "101817"
     },
     {
       "id": 2,
+      "userName": "pnina",
       "firstName": "Pnina",
       "lastName": "Rosenstark",
-      "name": "pnina",
       "password": "222"
     }
   ],

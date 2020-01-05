@@ -34,8 +34,8 @@ export abstract class RestService {
   }
 
   // chached version
-  protected getList(relativeUrl: string): Observable<any[]> {
-    if (!this.data) {
+  protected getList(relativeUrl: string, ignoreCachedData: boolean = false): Observable<any[]> {
+    if (!this.data || ignoreCachedData) {
       this.data = this.httpClient.get<any[]>(baseUrl + relativeUrl).pipe(shareReplay(1));
     }
     return this.data;

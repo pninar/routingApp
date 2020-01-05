@@ -14,8 +14,8 @@ export class UserService extends RestService {
 
   constructor(protected httpClient: HttpClient) { super(httpClient); }
 
-  getUsers(): Observable<IUser[]> {
-    return this.getList(this.relativeUrl);
+  getUsers(ignoreCachedData: boolean = false): Observable<IUser[]> {
+    return this.getList(this.relativeUrl, ignoreCachedData);
   }
 
   getUser(id: number): Observable<IUser> {

@@ -14,8 +14,8 @@ export class AllergyService extends RestService {
 
   constructor(protected httpClient: HttpClient) { super(httpClient); }
 
-  getAllergies(): Observable<IAllergy[]> {
-    return this.getList(this.relativeUrl);
+  getAllergies(ignoreCachedData: boolean = false): Observable<IAllergy[]> {
+    return this.getList(this.relativeUrl, ignoreCachedData);
   }
 
   getAllergy(id: number): Observable<IAllergy> {
