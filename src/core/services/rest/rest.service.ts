@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,6 +17,8 @@ const baseUrl = 'http://localhost:3000';
   providedIn: 'root'
 })
 export abstract class RestService {
+  private data: Observable<any[]>;
+
   constructor(protected httpClient: HttpClient) {
     console.log(this.httpClient);
   }
@@ -30,9 +33,20 @@ export abstract class RestService {
     return this.httpClient.get<any>(`${baseUrl + relativeUrl}`);
   }
 
+  // chached version
   protected getList(relativeUrl: string): Observable<any[]> {
-    return this.httpClient.get<any[]>(baseUrl + relativeUrl);
+    if (!this.data) {
+      this.data = this.httpClient.get<any[]>(baseUrl + relativeUrl).pipe(shareReplay(1));
+    }
+    return this.data;
   }
+
+  // non chached version
+  // protected getList(relativeUrl: string): Observable<any[]> {
+  //   return this.httpClient.get<any[]>(baseUrl + relativeUrl);
+
+  //   return this.users;
+  // }
 
   protected post(relativeUrl: string, data: any): Observable<any> {
     return this.httpClient.post<any>(baseUrl + relativeUrl, data, httpOptions);

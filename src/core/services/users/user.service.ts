@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { RestService } from '../rest/rest.service';
 import { IUser } from 'src/interfaces/user.interface';
 import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
