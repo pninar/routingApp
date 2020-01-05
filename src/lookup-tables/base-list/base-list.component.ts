@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ILookupItem } from 'src/interfaces/lookup-item.interface';
 import { LookupTablesApiUrls } from '../enums/api-urls .enum';
+import { IColumn } from 'src/interfaces/column.interface';
+import { IId } from 'src/interfaces/id.interface';
 
 @Component({
   selector: 'lookup-tables-base-list',
@@ -10,11 +11,12 @@ import { LookupTablesApiUrls } from '../enums/api-urls .enum';
   styleUrls: ['./base-list.component.css']
 })
 export abstract class BaseListComponent implements OnInit {
-  protected list: ILookupItem[];
+  protected list: IId[];
   protected modulePath: string = 'lookup-tables';
   abstract allowDelete: boolean;
   abstract allowEdit: boolean;
   abstract relativeRoute: string;
+  abstract columnList: IColumn[];
 
   abstract getList(): void;
   abstract delete(id: number): void;

@@ -15,7 +15,7 @@ import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
 export class UserEditComponent extends BaseEditComponent {
   // variable validationMessage stores the error message for each validation rule for each formControl
   validationMessages = {
-    "name": {
+    "userName": {
       "required": "Name is required.",
       "minlength": "Name must be greater than 2 characters.",
       "maxlength": "Name must be less than 10 characters.",
@@ -47,7 +47,7 @@ export class UserEditComponent extends BaseEditComponent {
     this.frm = this.fb.group(
       {
         id: ['', [Validators.required]],
-        name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
+        userName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
         password: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
       }
     );
@@ -58,7 +58,7 @@ export class UserEditComponent extends BaseEditComponent {
     // make sure to set the id to null so the rest api will know to fill it in
     this.item = {
       id: null,
-      name: '',
+      userName: '',
       password: '',
       firstName: '',
       lastName: ''
@@ -91,6 +91,6 @@ export class UserEditComponent extends BaseEditComponent {
 
   mapFormValuesToModel() {
     this.item.id = this.frm.value.id;
-    this.item.name = this.frm.value.name;
+    this.item.userName = this.frm.value.userName;
   }
 }

@@ -14,11 +14,11 @@
           </div>
         </div>
 
-        <div class="form-group row" [ngClass]="{'is-invalid': formErrors.name}">
-          <label class="col-sm-2 control-label" for="name">Name</label>
+        <div class="form-group row" [ngClass]="{'is-invalid': formErrors.userName}">
+          <label class="col-sm-2 control-label" for="name">User Name</label>
           <div class="col-sm-8">
-            <input id="name" type="text" class="form-control" formControlName="name" (blur)="logValidationErrors()">
-            <span class="help-block" *ngIf="formErrors.name">
+            <input id="name" type="text" class="form-control" formControlName="userName" (blur)="logValidationErrors()">
+            <span class="help-block" *ngIf="formErrors.userName">
               {{formErrors.name}}
             </span>
           </div>

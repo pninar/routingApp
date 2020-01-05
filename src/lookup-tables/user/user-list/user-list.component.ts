@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ILookupItem } from 'src/interfaces/lookup-item.interface';
 import { UserService } from 'src/core/services/users/user.service';
 import { BaseListComponent } from 'src/lookup-tables/base-list/base-list.component';
 import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
+import { IColumn } from 'src/interfaces/column.interface';
+import { IId } from 'src/interfaces/id.interface';
 
 @Component({
   selector: 'lookup-tables-user-list',
@@ -12,10 +13,16 @@ import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent extends BaseListComponent {
-  list: ILookupItem[];
+  list: IId[];
   allowDelete: boolean = true;
   allowEdit: boolean = true;
   relativeRoute: string = LookupTablesApiUrls.users;
+  columnList: IColumn[] = [
+    { header: 'Id', dataPropertyName: 'id' },
+    { header: 'User Name', dataPropertyName: 'userName' },
+    { header: 'First Name', dataPropertyName: 'firstName' },
+    { header: 'Last Name', dataPropertyName: 'lastName' }
+  ];
 
   constructor(private userService: UserService,
     protected router: Router) {
@@ -23,7 +30,7 @@ export class UserListComponent extends BaseListComponent {
   }
 
   getList() {
-    this.userService.getUsers().subscribe(
+    this.userService.getUsers(true).subscribe(
       (list) => {
         this.list = list;
       },

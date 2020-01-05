@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { ILookupItem } from 'src/interfaces/lookup-item.interface';
+import { IColumn } from 'src/interfaces/column.interface';
 
 @Component({
   selector: 'shared-lookup-list',
@@ -8,9 +8,10 @@ import { ILookupItem } from 'src/interfaces/lookup-item.interface';
   styleUrls: ['./lookup-list.component.css']
 })
 export class LookupListComponent implements OnInit {
-  @Input() list: ILookupItem[];
+  @Input() list: any[];
   @Input() allowDelete: boolean = true;
   @Input() allowEdit: boolean = true;
+  @Input() columnList: IColumn[] = [];
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
 
@@ -27,4 +28,7 @@ export class LookupListComponent implements OnInit {
     this.edit.emit(id);
   }
 
+  getItemValue(item: any, propertyName: string): any {
+    return Reflect.get(item, propertyName); // 1
+  }
 }

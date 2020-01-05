@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormA
 import { Router, ActivatedRoute } from '@angular/router';
 import { ILookupItem } from 'src/interfaces/lookup-item.interface';
 import { LookupTablesApiUrls } from '../enums/api-urls .enum';
+import { IId } from 'src/interfaces/id.interface';
 
 @Component({
   selector: 'lookup-tables-base-edit',
@@ -19,7 +20,7 @@ export abstract class BaseEditComponent implements OnInit {
 
   abstract frm: FormGroup;
   abstract pageTitle: string;
-  abstract item: ILookupItem;
+  abstract item: IId;
   abstract itemType: string;
   abstract relativeRoute: string;
 
@@ -92,7 +93,7 @@ export abstract class BaseEditComponent implements OnInit {
     });
   }
 
-  editItem(item: ILookupItem) {
+  editItem(item: IId) {
     this.frm.patchValue(item);
   }
 

@@ -1,6 +1,7 @@
-import { ILookupItem } from './lookup-item.interface';
+import { IId } from './id.interface';
 
-export interface IUser extends ILookupItem {
+export interface IUser extends IId {
+    userName: string;
     firstName: string;
     lastName: string;
     password: string;
