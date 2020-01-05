@@ -6,7 +6,8 @@ import { AuthGuard } from 'src/authentication/guards/auth/auth.guard';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { PatientsComponent } from './patients.component';
 import { SearchComponent } from './search/search.component';
-import { PatientComponent } from './patient/patient.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
+import { PatientEditComponent } from './patient-edit/patient-edit.component';
 
 const routes: Routes = [
     {
@@ -17,9 +18,16 @@ const routes: Routes = [
         children: [
             {
                 path: "patients/:id",
-                component: PatientComponent,
+                component: PatientEditComponent,
                 data: {
                     breadcrumb: 'Patient'
+                },
+            },
+            {
+                path: "patients",
+                component: PatientListComponent,
+                data: {
+                    breadcrumb: 'List'
                 },
             },
             {
