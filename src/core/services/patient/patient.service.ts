@@ -19,6 +19,14 @@ export class PatientService extends RestService {
     this.patient.next(patient);
   }
 
+  changePatientById(id: number) {
+    let patient = this.getPatient(id).subscribe(
+      (patient: IPatient) => {
+        this.changePatient(patient);
+      }
+    );
+  }
+
   getPatients(firstName: string = '', lastName: string = ''): Observable<IPatient[]> {
     return this.getList(this.relativeUrl);
   }
