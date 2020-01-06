@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { AuthenticationService } from 'src/core/services/authenticaton/authentication.service';
+import { IUser } from 'src/interfaces/user.interface';
 
 @Component({
   selector: 'authentication-login',
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     this.loginForm.valueChanges.subscribe((data) => {
       this.logValidationErrors(this.loginForm);
-      console.log(this.formErrors);
+      // console.log(this.formErrors);
     });
   }
 
@@ -76,13 +77,25 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.controls.userName.value);
-    console.log(this.loginForm.get("password").value);
-    this.login();
+    let userName = this.loginForm.get("userName").value;
+    let password = this.loginForm.get("password").value;
+
+    this.login(userName, password);
   }
 
-  login() {
-    this.authenticationService.login('', '');
-    this.router.navigate(['home']);
+  login(userName: string, password: string) {
+    this.authenticationService.getUserWithNameAndPassword(userName, password)
+      .subscribe(
+        (users: IUser[]) => {
+          let user = users.length == 0 ? null : <IUser>users[0];
+
+          if (user) {
+            this.authenticationService.login(user);
+            this.router.navigate(['home']);
+          }
+          else
+            alert("No such user!");
+        }
+      );
   }
 }

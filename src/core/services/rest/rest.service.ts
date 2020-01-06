@@ -33,6 +33,9 @@ export abstract class RestService {
     return this.httpClient.get<any>(`${baseUrl + relativeUrl}`);
   }
 
+  protected getWithParamters(relativeUrl: string): Observable<any> {
+    return this.httpClient.get<any>(`${baseUrl + relativeUrl}`);
+  }
   // cached version
   // return cached data if:
   // 1. haven't gotten any data yet

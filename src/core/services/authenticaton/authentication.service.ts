@@ -1,61 +1,62 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
 
+import { RestService } from '../rest/rest.service';
 import { IUser } from 'src/interfaces/user.interface';
-import { User } from 'src/models/user.model';
-
 
 @Injectable({ providedIn: 'root' })
-export class AuthenticationService {
-  private currentUser: User = null;
-  baseUrl = 'localhost:3000/users';
+export class AuthenticationService extends RestService {
+  private relativeUrl: string = '/users/';
+  private userLoggedIn: boolean = false;
 
-  constructor(private httpClient: HttpClient) { console.log('AuthenticationService created'); }
+  private user$ = new BehaviorSubject(null);
+  currentUser = this.user$.asObservable();
+
+  constructor(protected httpClient: HttpClient) { super(httpClient); }
+
+  changeUser(user: IUser) {
+    this.user$.next(user);
+  }
 
   getUsers(): Observable<IUser[]> {
-    return this.httpClient.get<IUser[]>(this.baseUrl);
+    return this.getList(this.relativeUrl);
   }
 
   getUser(id: number): Observable<IUser> {
-    return this.httpClient.get<IUser>(`${this.baseUrl}/${id}`);
+    return this.get(`${this.relativeUrl}${id.toString()}`);
   }
 
   addUser(user: IUser): Observable<IUser> {
-    return this.httpClient.post<IUser>(this.baseUrl, user,
-      {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      });
+    return this.post(this.relativeUrl, user);
   }
 
   updateUser(user: IUser): Observable<void> {
-    return this.httpClient.put<void>(`${this.baseUrl}/${user}`,
-      {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      });
+    return this.put(`${this.relativeUrl}/${user.id}`, user);
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${this.baseUrl}/${id}`);
+    return this.delete(this.relativeUrl, id);
   }
 
-  public isLoggedIn(): boolean {
-    return this.currentUser != null;
+  setUserLoggedIn(value: boolean): void {
+    this.userLoggedIn = value;
   }
 
-  login(username, password) {
-    // console.log(this.getUsers());
-    // console.log('todo: put in log function');
-    this.currentUser = new User();
-    this.currentUser.Name = username;
+  isLoggedIn(): boolean {
+    return this.userLoggedIn;
+  }
+
+  getUserWithNameAndPassword(username: string, password: string): Observable<IUser[]> {
+    return this.getWithParamters(`${this.relativeUrl}?userName=${username}&password=${password}`);
+  }
+
+  login(user: IUser) {
+    this.changeUser(user);
+    this.setUserLoggedIn(true);
   }
 
   logout() {
-    this.currentUser = null;
+    this.setUserLoggedIn(false);
   }
 }
