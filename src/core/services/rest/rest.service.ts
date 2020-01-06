@@ -33,8 +33,16 @@ export abstract class RestService {
     return this.httpClient.get<any>(`${baseUrl + relativeUrl}`);
   }
 
-  protected getWithParamters(relativeUrl: string): Observable<any> {
-    return this.httpClient.get<any>(`${baseUrl + relativeUrl}`);
+  protected getListCacheData(relativeUrl: string, ignoreCachedData: boolean = false): Observable<any[]> {
+    if (!this.data || ignoreCachedData) {
+      this.data = this.httpClient.get<any[]>(baseUrl + relativeUrl).pipe(shareReplay(1));
+    }
+    return this.data;
+  }
+
+  protected getWithParamters(relativeUrl: string, ignoreCachedData: boolean = false): Observable<any[]> {
+    return this.getListCacheData(relativeUrl, ignoreCachedData);
+    // return this.httpClient.get<any>(`${baseUrl + relativeUrl}`);
   }
   // cached version
   // return cached data if:
@@ -42,10 +50,11 @@ export abstract class RestService {
   // 2. want the cached data
   // for example, when editing the list, we don't want to use the cached data because we want to see the edited changes
   protected getList(relativeUrl: string, ignoreCachedData: boolean = false): Observable<any[]> {
-    if (!this.data || ignoreCachedData) {
-      this.data = this.httpClient.get<any[]>(baseUrl + relativeUrl).pipe(shareReplay(1));
-    }
-    return this.data;
+    return this.getListCacheData(relativeUrl, ignoreCachedData);
+    // if (!this.data || ignoreCachedData) {
+    //   this.data = this.httpClient.get<any[]>(baseUrl + relativeUrl).pipe(shareReplay(1));
+    // }
+    // return this.data;
   }
 
   // non chached version

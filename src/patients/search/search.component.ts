@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { PatientService } from 'src/core/services/patient/patient.service';
 import { PatientsRoutes } from '../enums/routes .enum';
+import { BaseFormComponent } from 'src/shared/components/base-form/base-form.component';
 
 @Component({
   selector: 'patients-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent extends BaseFormComponent {
   frm: FormGroup;
+  pageTitle: string = 'Search';
 
   // variable validationMessage stores the error message for each validation rule for each formControl
   validationMessages = {}
@@ -21,10 +23,11 @@ export class SearchComponent implements OnInit {
 
   constructor(private patientService: PatientService,
     private router: Router,
-    private fb: FormBuilder) { }
+    protected fb: FormBuilder) {
+    super(fb);
+  }
 
-
-  ngOnInit() {
+  initForm() {
     this.frm = this.fb.group(
       {
         firstName: [''],
@@ -32,7 +35,6 @@ export class SearchComponent implements OnInit {
       }
     );
   }
-
 
   onSubmit(): void {
     let firstName = this.frm.get("firstName").value;
@@ -42,7 +44,7 @@ export class SearchComponent implements OnInit {
   }
 
   search(firstName: string, lastName: string) {
-    this.patientService.getPatients(firstName, lastName).subscribe(
+    this.patientService.getPatientsWithParameters(firstName, lastName).subscribe(
       () => this.router.navigate([PatientsRoutes.moduleRoute + '/' + PatientsRoutes.patients]),
       (err: any) => console.log(err)
     );
