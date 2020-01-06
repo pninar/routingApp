@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilityService } from 'src/core/services/utility/utility.service';
 
 @Component({
   selector: 'app-feature2',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Feature2Component implements OnInit {
 
-  constructor() { }
+
+  constructor(private utilityService: UtilityService) { }
 
   ngOnInit() {
+    this.utilityService.changeCurrentModuleTitle("Feature2");
   }
 
 }

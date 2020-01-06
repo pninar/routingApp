@@ -19,26 +19,6 @@ export class AuthenticationService extends RestService {
     this.user$.next(user);
   }
 
-  getUsers(): Observable<IUser[]> {
-    return this.getList(this.relativeUrl);
-  }
-
-  getUser(id: number): Observable<IUser> {
-    return this.get(`${this.relativeUrl}${id.toString()}`);
-  }
-
-  addUser(user: IUser): Observable<IUser> {
-    return this.post(this.relativeUrl, user);
-  }
-
-  updateUser(user: IUser): Observable<void> {
-    return this.put(`${this.relativeUrl}/${user.id}`, user);
-  }
-
-  deleteUser(id: number): Observable<void> {
-    return this.delete(this.relativeUrl, id);
-  }
-
   setUserLoggedIn(value: boolean): void {
     this.userLoggedIn = value;
   }

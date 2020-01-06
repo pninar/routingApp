@@ -8,6 +8,7 @@ import { ErrorService } from './services/error/error.service';
 import { LoggingService } from './services/logging/logging.service';
 import { NotificationService } from './services/notification/notification.service';
 import { AuthenticationService } from './services/authenticaton/authentication.service';
+import { UtilityService } from './services/utility/utility.service';
 
 @NgModule({
   declarations: [],
@@ -22,7 +23,8 @@ import { AuthenticationService } from './services/authenticaton/authentication.s
     AuthenticationService,
     ErrorService,
     LoggingService,
-    NotificationService
+    NotificationService,
+    UtilityService
   ]
 })
 export class CoreModule {

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from 'src/core/services/authenticaton/authentication.service';
 import { IUser } from 'src/interfaces/user.interface';
+import { UtilityService } from 'src/core/services/utility/utility.service';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +11,18 @@ import { IUser } from 'src/interfaces/user.interface';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Application Name';
+  brand = 'Application Name';
+  moduleTitle = ''
   user: IUser;
 
   constructor(private authenticationService: AuthenticationService,
+    private utilityService: UtilityService,
     private router: Router) {
   }
 
   ngOnInit() {
     this.authenticationService.currentUser.subscribe(user => this.user = user)
+    this.utilityService.currentModuleTitle.subscribe(moduleTitle => this.moduleTitle = moduleTitle)
   }
 
   isLoggedIn(): boolean {
