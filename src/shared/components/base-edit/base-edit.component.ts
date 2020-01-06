@@ -3,22 +3,14 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, FormA
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { IId } from 'src/interfaces/id.interface';
+import { BaseFormComponent } from '../base-form/base-form.component';
 
 @Component({
   selector: 'shared-base-edit',
   templateUrl: './base-edit.component.html',
   styleUrls: ['./base-edit.component.css']
 })
-export abstract class BaseEditComponent implements OnInit {
-
-  // variable validationMessage stores the error message for each validation rule for each formControl
-  abstract validationMessages = {};
-
-  // variable formErrors stores the current error message for each formControl
-  abstract formErrors = {}
-
-  abstract frm: FormGroup;
-  abstract pageTitle: string;
+export abstract class BaseEditComponent extends BaseFormComponent implements OnInit {
   abstract item: IId;
   abstract itemType: string;
   abstract modulePath: string;
@@ -27,24 +19,18 @@ export abstract class BaseEditComponent implements OnInit {
   abstract mapFormValuesToModel(): void;
   abstract update(): void;
   abstract add(): void;
-  abstract initForm(): void;
   abstract setItemFromService(id: number): void;
   abstract setNewItem();
 
   constructor(protected router: Router,
     protected route: ActivatedRoute,
-    protected fb: FormBuilder) { }
-
-  ngOnInit() {
-    this.initForm();
-    this.subscribeToFormValueChanges();
-    this.subscribeToRouteParameters();
+    protected fb: FormBuilder) {
+    super(fb);
   }
 
-  subscribeToFormValueChanges(): void {
-    this.frm.valueChanges.subscribe((data) => {
-      this.logValidationErrors(this.frm);
-    });
+  ngOnInit() {
+    super.ngOnInit();
+    this.subscribeToRouteParameters();
   }
 
   subscribeToRouteParameters(): void {
@@ -61,35 +47,6 @@ export abstract class BaseEditComponent implements OnInit {
         // make sure to set the id to null so the rest api will know to fill it in
         this.setNewItem();
       }
-    });
-  }
-
-  logValidationErrors(group: FormGroup = this.frm): void {
-    Object.keys(group.controls).forEach((key: string) => {
-      const abstractControl = group.get(key);
-
-      this.formErrors[key] = ''; //clear previous validation errors
-
-      if (abstractControl && !abstractControl.valid && (abstractControl.touched || abstractControl.dirty || abstractControl.value !== '')) {
-        const messages = this.validationMessages[key];
-        for (const errorKey in abstractControl.errors) {
-          if (errorKey) {
-            this.formErrors[key] += messages[errorKey] + ' ';
-          }
-        }
-      }
-
-      if (abstractControl instanceof FormGroup) {
-        this.logValidationErrors(abstractControl);
-      }
-
-      // if (abstractControl instanceof FormArray) {
-      //   for (const control of abstractControl.controls) {
-      //     if (control instanceof FormGroup) {
-      //       this.logValidationErrors(control);
-      //     }
-      //   }
-      // }
     });
   }
 
