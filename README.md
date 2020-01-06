@@ -17,3 +17,7 @@ g.	run command: json-server --watch db.json
 # How to cache HTTP requests in Angular
 a.Often when working with Angular applications, we make HTTP requests to access data from an API. Sometimes we are making requests to the same API endpoint in which case it'd make sense to cache the result of the response to avoid further requests.
 https://dev.to/angular/how-to-cache-http-requests-in-angular-5c8i
+
+# using BehaviorSubject to shared data between unrelated Components: Sharing Data with a Service
+https://angularfirebase.com/lessons/sharing-data-between-angular-components-four-methods/
+used in patientListComponent to save selected patient in patientService 

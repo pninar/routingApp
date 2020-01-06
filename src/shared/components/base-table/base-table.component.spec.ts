@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LookupListComponent } from './lookup-list.component';
+import { BaseTableComponent } from './base-table.component';
 
-describe('LookupListComponent', () => {
-  let component: LookupListComponent;
-  let fixture: ComponentFixture<LookupListComponent>;
+describe('BaseTableComponent', () => {
+  let component: BaseTableComponent;
+  let fixture: ComponentFixture<BaseTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LookupListComponent ]
+      declarations: [BaseTableComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LookupListComponent);
+    fixture = TestBed.createComponent(BaseTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
