@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
@@ -11,7 +11,7 @@ import { BaseFormComponent } from 'src/shared/components/base-form/base-form.com
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent extends BaseFormComponent implements OnInit {
+export class LoginComponent extends BaseFormComponent {
   frm: FormGroup;
   pageTitle: string = 'Login';
 
