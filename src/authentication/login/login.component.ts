@@ -4,14 +4,16 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { AuthenticationService } from 'src/core/services/authenticaton/authentication.service';
 import { IUser } from 'src/interfaces/user.interface';
+import { BaseFormComponent } from 'src/shared/components/base-form/base-form.component';
 
 @Component({
   selector: 'authentication-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+export class LoginComponent extends BaseFormComponent implements OnInit {
+  frm: FormGroup;
+  pageTitle: string = 'Login';
 
   // variable validationMessage stores the error message for each validation rule for each formControl
   validationMessages = {
@@ -31,54 +33,22 @@ export class LoginComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
     private router: Router,
-    private fb: FormBuilder) { }
+    protected fb: FormBuilder) {
+    super(fb);
+  }
 
-
-  ngOnInit() {
-    this.loginForm = this.fb.group(
+  initForm() {
+    this.frm = this.fb.group(
       {
         userName: ['', Validators.required],
         password: ['', Validators.required],
       }
     );
-
-    this.loginForm.valueChanges.subscribe((data) => {
-      this.logValidationErrors(this.loginForm);
-      // console.log(this.formErrors);
-    });
-  }
-
-  // function logValidationErrors loops through each control in the group parameter
-  // if the control is itself a FormGroup, iterate on its controls
-  // for each formControl:
-  // 1. clear its previous errors
-  // 2. log its current errors:
-  // if it's not null and not valid, get its messages from validationMessages
-  // for each error in the control's errors:
-  // add the error to the controls key in formErrors
-  logValidationErrors(group: FormGroup = this.loginForm): void {
-    Object.keys(group.controls).forEach((key: string) => {
-      const abstractControl = group.get(key);
-      if (abstractControl instanceof FormGroup) {
-        this.logValidationErrors(abstractControl);
-      } else {
-        this.formErrors[key] = ''; //clear previous validation errors
-
-        if (abstractControl && !abstractControl.valid && (abstractControl.touched || abstractControl.dirty)) {
-          const messages = this.validationMessages[key];
-          for (const errorKey in abstractControl.errors) {
-            if (errorKey) {
-              this.formErrors[key] += messages[errorKey] + ' ';
-            }
-          }
-        }
-      }
-    });
   }
 
   onSubmit(): void {
-    let userName = this.loginForm.get("userName").value;
-    let password = this.loginForm.get("password").value;
+    let userName = this.frm.get("userName").value;
+    let password = this.frm.get("password").value;
 
     this.login(userName, password);
   }
