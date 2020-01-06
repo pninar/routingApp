@@ -31,10 +31,25 @@
     },
     {
       "id": 3,
-      "firstName": "David",
-      "lastName": "Rosenstark",
+      "firstName": "John",
+      "lastName": "Doe2",
       "contactPreference": "email",
-      "email": "drosenstark@merozsoftware.co.il",
+      "email": "john@merozsoftware.co.il",
+      "phone": "9993580",
+      "phoneNumbers": [
+        {
+          "areaCode": "054",
+          "number": "5723580",
+          "type": "mobile"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "firstName": "John",
+      "lastName": "XXX",
+      "contactPreference": "email",
+      "email": "john@merozsoftware.co.il",
       "phone": "9993580",
       "phoneNumbers": [
         {
@@ -59,6 +74,13 @@
       "firstName": "Pnina",
       "lastName": "Rosenstark",
       "password": "222"
+    },
+    {
+      "id": 3,
+      "userName": "pnina",
+      "firstName": "Pnina1",
+      "lastName": "XXX",
+      "password": "111"
     }
   ],
   "allergies": [
