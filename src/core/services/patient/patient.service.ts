@@ -46,4 +46,17 @@ export class PatientService extends RestService {
   deletePatient(id: number): Observable<void> {
     return this.delete(this.relativeUrl, id);
   }
+
+  getPatientsWithParameters(firstName: string, lastName: string): Observable<IPatient[]> {
+    let url = `${this.relativeUrl}`;
+    url += firstName || lastName ? '?' : '';
+    url += firstName ? `firstName=${firstName}` : '';
+    url += firstName && lastName ? '&' : '';
+    url += lastName ? `lastName=${lastName}` : '';
+
+    // console.log(url)
+
+    //return this.getWithParamters(`${this.relativeUrl}?firstName=${firstName}&lastName=${lastName}`);
+    return this.getWithParamters(url, true);
+  }
 }
