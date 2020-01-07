@@ -17,8 +17,9 @@ export class SideMenuComponent implements OnInit {
   }
 
   navigate(path) {
-    this.router.navigate([{ outlets: { primary: path, sidemenu: path } }],
-      { relativeTo: this.route });
+    // this.router.navigate([{ outlets: { primary: path, sidemenu: path } }],
+    //   { relativeTo: this.route });
+    console.log(this.route);
+    this.router.navigate([path], { relativeTo: this.route });
   }
-
 }

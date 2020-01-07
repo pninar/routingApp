@@ -74,6 +74,6 @@ export class BreadcrumbComponent implements OnInit {
   // explains that when loading lazy, if there is an empty path for the module in the routes, the breadcrumbs won't work
   // hack - set a path property in the data of the route where the path is empty and we need a path
   clickBreadcrumb(breadcrumb: IBreadCrumb) {
-    console.log(breadcrumb);
+    // console.log(breadcrumb);
   }
 }

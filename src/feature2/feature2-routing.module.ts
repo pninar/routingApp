@@ -6,6 +6,8 @@ import { AuthGuard } from 'src/authentication/guards/auth/auth.guard';
 import { Feature2Component } from './feature2.component';
 import { Feature2CardsComponent } from './feature2-cards/feature2-cards.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { PrimaryOutletComponent } from './primary-outlet/primary-outlet.component';
+import { Outlet2Component } from './outlet2/outlet2.component';
 
 
 const routes: Routes = [
@@ -19,11 +21,16 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component: Feature2CardsComponent,
+                component: PrimaryOutletComponent,
                 data: {
                     breadcrumb: null,
                     path: 'feature2'
                 },
+            },
+            {
+                path: '',
+                outlet: 'outlet2',
+                component: Outlet2Component
             },
             {
                 path: ':id',
