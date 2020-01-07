@@ -19,6 +19,7 @@ const routes: Routes = [
         data: {
             breadcrumb: 'Courses',
         },
+
         children: [
             {
                 path: '',

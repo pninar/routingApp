@@ -1,0 +1,7 @@
+<div class="bg-light border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading">Side Bar </div>
+  <div class="list-group list-group-flush" *ngFor="let sideBarLink of sideBarLinks">
+    <a class="list-group-item list-group-item-action bg-light"
+      [routerLink]="[sideBarLink.url]">{{sideBarLink.label}}</a>
+  </div>
+</div>

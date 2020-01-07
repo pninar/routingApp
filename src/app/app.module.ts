@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthenticationModule } from 'src/authentication/authentication.module';
+import { SharedModule } from 'src/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthenticationModule } from 'src/authentication/authentication.module';
     AuthenticationModule,
     CoursesModule,
     Feature2Module,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

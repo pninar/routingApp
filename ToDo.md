@@ -1,2 +1,1 @@
-# click button for list components - 
-# patient behaviorSubject
+# module components - make a base class

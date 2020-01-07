@@ -5,12 +5,13 @@ import { Observable } from 'rxjs';
 import { RestService } from '../rest/rest.service';
 
 import { IAllergy } from 'src/interfaces/allergy.interface';
+import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AllergyService extends RestService {
-  private relativeUrl: string = '/allergies/';
+  private relativeUrl: string = '/' + LookupTablesApiUrls.allergies + '/';
 
   constructor(protected httpClient: HttpClient) { super(httpClient); }
 

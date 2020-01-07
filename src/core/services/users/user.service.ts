@@ -4,13 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { RestService } from '../rest/rest.service';
 import { IUser } from 'src/interfaces/user.interface';
 import { Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { LookupTablesApiUrls } from 'src/lookup-tables/enums/api-urls .enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService extends RestService {
-  private relativeUrl: string = '/users/';
+  private relativeUrl: string = '/' + LookupTablesApiUrls.users + '/';
 
   constructor(protected httpClient: HttpClient) { super(httpClient); }
 
