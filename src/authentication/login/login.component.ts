@@ -54,17 +54,21 @@ export class LoginComponent extends BaseFormComponent {
   }
 
   login(userName: string, password: string) {
+    // console.log('login');
+    // console.log(userName + ' ' + password);
     this.authenticationService.getUserWithNameAndPassword(userName, password)
       .subscribe(
         (users: IUser[]) => {
+          // console.log(users);
           let user = users.length == 0 ? null : <IUser>users[0];
 
           if (user) {
             this.authenticationService.login(user);
             this.router.navigate(['home']);
           }
-          else
+          else {
             alert("No such user!");
+          }
         }
       );
   }

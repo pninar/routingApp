@@ -28,7 +28,7 @@ export class AuthenticationService extends RestService {
   }
 
   getUserWithNameAndPassword(username: string, password: string): Observable<IUser[]> {
-    return this.getWithParamters(`${this.relativeUrl}?userName=${username}&password=${password}`);
+    return this.getWithParamters(`${this.relativeUrl}?userName=${username}&password=${password}`, true);
   }
 
   login(user: IUser) {
