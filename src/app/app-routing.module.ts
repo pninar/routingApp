@@ -15,26 +15,31 @@ const routes: Routes = [
   },
   {
     path: 'about',
+    data: { breadcrumb: 'About' },
     component: AboutComponent,
     canActivate: [AuthGuard],
   },
   {
     path: 'courses',
     canActivate: [AuthGuard],
+    data: { breadcrumb: 'Courses' },
     loadChildren: '../courses/courses.module#CoursesModule'
   },
   {
     path: 'feature2',
+    data: { breadcrumb: 'Feature2' },
     canActivate: [AuthGuard],
     loadChildren: '../feature2/feature2.module#Feature2Module'
   },
   {
     path: 'lookup-tables',
+    data: { breadcrumb: 'Lookup Tables' },
     canActivate: [AuthGuard],
     loadChildren: '../lookup-tables/lookup-tables.module#LookupTablesModule'
   },
   {
     path: 'patients',
+    data: { breadcrumb: 'Patients' },
     canActivate: [AuthGuard],
     loadChildren: '../patients/patients.module#PatientsModule'
   },
