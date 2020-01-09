@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
     <a class="navbar-brand" href="#">{{brand}}</a>
 
     <!-- Links -->
@@ -23,8 +23,9 @@
       </li>
     </ul>
 
-    <div class="collapse navbar-collapse" id="navbarSuapportedContent-4">
-      <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="divNavbarUser">
+      <!-- <ul class="navbar-nav" id="ulNavbarUser"> -->
+      <ul class="nav navbar-nav " id="ulNavbarUser">
         <!-- <li class="nav-item active">
         <a class="nav-link" href="#"><i class="fa fa-envelope"></i> Contact <span class="sr-only">(current)</span></a>
       </li> -->
@@ -34,7 +35,7 @@
         <li class="nav-item dropdown" *ngIf="isLoggedIn()">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false"><i class="fa fa-user"></i> Hello, {{user?.firstName}} </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+          <div class="dropdown-menu dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
             <a class="dropdown-item" href="#">My account</a>
             <a class="dropdown-item" (click)="logout()">Log out</a>
           </div>

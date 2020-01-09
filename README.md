@@ -5,6 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## app using auxiliary routes based on:
 https://blog.angular-university.io/angular-2-router-nested-routes-and-nested-auxiliary-routes-build-a-menu-navigation-system/
 
+## json server link
+https://spin.atomicobject.com/2018/10/08/mock-api-json-server/
+
 # creating a fake online rest api 
 a.	npm install -g json-server
 b.	create db.json in root folder
